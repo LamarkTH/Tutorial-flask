@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylepaginasobre.css">
+    <title>Cadastro de Profissional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="container mt-5"><a href="{{url_for('ola_mundo')}}">pag inicial</a></header>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Cadastrar</h2>
+        
+        <!-- Formulário -->
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <!-- Foto -->
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto</label>
+                <input class="form-control" type="file" id="foto" name="foto" accept="image/*" required>
+            </div>
+
+            <!-- Serviços -->
+            <div class="mb-3">
+                <label for="servicos" class="form-label">Serviços</label>
+                <select class="form-select" id="servicos" name="servicos" required>
+                    <option value="" disabled selected>Selecione o tipo de serviço</option>
+                    <option value="eletricista">Pedreiro</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pintor">Pintor</option>
+                </select>
+            </div>
+
+            <!-- Sobre o profissional -->
+            <div class="mb-3">
+                <label for="sobre" class="form-label">Sobre o Profissional</label>
+                <textarea class="form-control" id="sobre" name="sobre" rows="4" placeholder="Escreva algo sobre você" required></textarea>
+            </div>
+
+            <!-- Contato -->
+            <div class="mb-3">
+                <label for="contato" class="form-label">Contato</label>
+                <input type="tel" class="form-control" id="contato" name="contato" placeholder="(xx) xxxx-xxxx" pattern="\(\d{2}\) \d{4}-\d{4}" required>
+            </div>
+
+            <!-- Botão de envio -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
