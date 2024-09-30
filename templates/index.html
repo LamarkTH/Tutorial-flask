@@ -1,29 +1,23 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>teste demo</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Pagina incial</title>
+    
+    <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
   </head>
   <body>
     <div>
-        <h1 class="titulo">{{ titulo }}</h1>
-        {% for elementos in lista %}
-        {%if elementos.sexo=="M"%}
-            <div class="text-success">{{elementos.nome}}</div>
-        {%elif elementos.sexo=="F"%}
-            <div class="text-danger">{{elementos.nome}}</div>
-        {%endif%}
-        {% endfor %}
-
-       <p>{{sobre}}</p> 
-
+       <h1>Lista de Clientes</h1>
     </div>
-    <a href="{{url_for('pagina_sobre')}}">Sobre</a>
- 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Cru.js :Blblioteca JS que facilita requisições web
+     Vamos importar essa bliblioteca para fazer requisições (get) de dados dentro do proprio servidor(da lista de clientes) assim que a pagina é carregada -->
+    <div c-container="{{ url_for('cliente.listar_clientes') }}"></div>
+ <!-- Obs:Na url_for do blueprint, para requisitar a url de uma determinada função, tem que primeiro dizer a qual blue print ela pertence-->
+    <!--Esse container possui a def listar_clientes, que renderiza a pagina html lista_clientes.html através do render template -->
+    <script src="{{url_for('static',filename='js/cru.js')}}"></script> 
   </body>
 </html>

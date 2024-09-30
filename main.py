@@ -1,22 +1,16 @@
-from flask import Flask, url_for, render_template
+from flask import Flask
+from flask import Blueprint
+from routes.home import home_route
+from routes.clientes import cliente_route
+
 
 app=Flask(__name__)#Inicialização e organização dos recursos
 
-@app.route("/")
-def ola_mundo():
-    nome="Informações"
-    informacoes=[
-                 {"nome":"Thiago","sexo":"M","profissao":"TI"},
-                 {"nome":"Ana","sexo":"F","profissao":"Prof"},
-                 {"nome":"Thales","sexo":"M","profissao":"Caminhoneiro"}
-                 ]
-    sobre="Meu nomre é josè tenho asddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-    return render_template("index.html",titulo=nome,lista=informacoes,sobre=sobre)
+#Todas as paginas relacionadas com a pagina home, ou seja, suas rotas tem que estar em um mesmo modulo
+app.register_blueprint(home_route)#Registrando a rota home no arquivo principal.
 
-
-@app.route("/sobre")
-def pagina_sobre():
-    return render_template("paginasobre.html")
-
-
-app.run(debug=True)#Modo desenvolvedor
+#Todas as paginas relacionadas com a pagina clientes, ou seja, suas rotas tem que estar em um mesmo modulo
+app.register_blueprint(cliente_route, url_prefix='/clientes')
+#Registrando a rota home no arquivo principal.
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
